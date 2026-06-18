@@ -1,0 +1,17 @@
+@if (!routerLink) {
+  <a
+    [attr.href]="routerLink"
+    [attr.target]="target"
+    [attr.rel]="rel"
+    [class.disabled]="disabled"
+    [class]="class"
+    >{{ label }}</a>
+} @else {
+  <a
+    [routerLink]="routerLink"
+    [attr.target]="target"
+    [attr.rel]="rel"
+    [class.disabled]="disabled"
+    [class]="class"
+    >{{ label }}</a>
+}
