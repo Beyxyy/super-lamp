@@ -16,3 +16,9 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.H2Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:8080/realms/superLamp
+          jwk-set-uri: http://127.0.0.1:8080/realms/superLamp/protocol/openid-connect/certs
