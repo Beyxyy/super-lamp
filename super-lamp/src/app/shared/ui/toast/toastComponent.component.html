@@ -1,6 +1,8 @@
 <div class="toast-container">
-    <div *ngFor="let t of toasts" class="toast" [ngClass]="t.type">
-        <div class="message">{{ t.message }}</div>
-        <button class="close" (click)="close(t.id)">✕</button>
-    </div>
+    @for (t of toasts$ | async; track t.id) {
+        <div class="toast" [ngClass]="t.type">
+            <div class="message">{{ t.message }}</div>
+            <button class="close" (click)="close(t.id)">✕</button>
+        </div>
+    }
 </div>

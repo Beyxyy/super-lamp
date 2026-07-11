@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs/internal/Subscription';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { ToastService } from '../../../core/services/toast.service';
-import { IToast } from '../../../core/interface/toast.interface';
+import { Observable } from 'rxjs';
+import { IToast } from '@core/interface/toast.interface';
 
 @Component({
   selector: 'app-toast',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, AsyncPipe],
   templateUrl: './toastComponent.component.html',
   styleUrl: './toastComponent.component.css'
 })
 export class ToastComponent {
-  toasts: IToast[] = [];
-  private sub!: Subscription;
+  public  toasts$! : Observable<IToast[]>
 
-  constructor(private toastService: ToastService) {}
-
-  ngOnInit() {
-    this.sub = this.toastService.visibleToasts.subscribe(t=> {this.toasts = t});
+  constructor(private s_toast: ToastService) {
+    this.toasts$ = this.s_toast.visibleToasts;
+    
   }
 
-  ngOnDestroy() { this.sub?.unsubscribe(); }
-  close(id: number) { this.toastService.remove(id); }
+  close(id: number) { this.s_toast.remove(id); }
 }

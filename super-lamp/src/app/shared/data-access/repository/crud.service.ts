@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'  
 })
-export abstract class BaseEntityService<T> {
+export abstract class CrudService<T> {
   protected abstract readonly entityName: string;
   protected readonly apiUrl = ``;
 

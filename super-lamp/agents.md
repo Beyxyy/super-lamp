@@ -12,6 +12,11 @@ Une application pour partager ses voyages à ses proches
 - **Fonctions/Méthode** : `snake_case` (ex: `getUserName`)
 - **Classes** : `PascalCase` (ex: `UserService`)
 - **Constantes** : `UPPER_SNAKE_CASE` (ex: `MAX_RETRIES`)
+#### Bonne pratique angular
+- **Input** privilégier les Signals par rapport au @Input et @Output
+- **Template** utiliser @for et @if et @else au lieu de ngIf ngFor, etc...
+#### Architecture:
+- Toujours mettre au bon endroit les fichiers (interfaces, services, Enum). Pas d'interface/enum dans les fichiers de composants
 
 ## **Project structure**
 app
@@ -21,15 +26,17 @@ app
     │   ├── interceptors
     │   ├── interface
     │   └── services (core service used across application)
-    ├── features
-    │   ├── **feature name **
-    │   │   ├── component **feature component (used in page)**
-    │   │   ├── pages (feature pages)
-    │   │   └── services (feature services)
+    ├── pages
+    │   ├── ** page name **
+    │   │   ├── component **used in page**
+    │   │   └── services (feature services used only in this page rarely used)
     ├── routes
     └── shared
         ├── data-access
+            ├──repository (appel api et caching)
+            └──facade (interface entre les repository et les composants)
         ├── directives
+        ├── enums
         ├── pipes
         └── ui
             ├── button

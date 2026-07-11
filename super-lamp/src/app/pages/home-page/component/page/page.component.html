@@ -1,0 +1,44 @@
+<div [class]="'page'" 
+    [class.active]="is_current"
+    [class.passed]="is_passed"
+    [style.z-index]="-page.id">
+
+@if (s_user.isAdmin || true) {
+  <div class="header">
+    @if (mode == MODE_READ) {
+      <button (click)="onChangeMode(MODE_WRITE)">
+        edit
+      </button>
+    } 
+    @else {
+      <button (click)="onChangeMode(MODE_READ)">
+        cancel
+      </button>
+      <button (click)="onSave()">
+        save
+      </button>
+    }
+  </div>
+}
+  
+
+  @if( mode == MODE_READ){
+    <div class="page-content">
+      <markdown [data]="page.contenu"></markdown>
+    </div>
+    <button 
+      class="turn-page-arrow"
+      (click)="onTurnPageLeft()"
+    >
+      &raquo;
+    </button>
+    <button 
+      (click)="onTurnPageRight()"
+      [disabled]="isLast"
+    > &raquo;
+    </button>
+  }
+  @else {
+    <div contenteditable="true" #contenuMarkdown>{{page.contenu}}</div>
+  }  
+</div>

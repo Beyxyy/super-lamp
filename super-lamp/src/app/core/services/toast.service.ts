@@ -21,11 +21,11 @@ export class ToastService {
         const toast: IToast = { id, message, type, duration };
         this.toasts.push(toast);
         this.toasts$.next([...this.toasts]);
-
-        if (duration > 0) {
-            const timer = setTimeout(() => this.remove(id), duration);
-            this.timers.set(id, timer);
-        }
+        const timer = setTimeout(() => {
+          console.log("Toast auto-remove", id);
+          this.remove(id);
+        }, duration);
+        this.timers.set(id, timer);
         return id;
     }
 
@@ -35,7 +35,7 @@ export class ToastService {
         if (idx === -1) return;
         this.toasts.splice(idx, 1);
         this.toasts$.next([...this.toasts]);
-
+        
         const timer = this.timers.get(id);
         if (timer) {
             clearTimeout(timer);

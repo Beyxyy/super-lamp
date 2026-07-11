@@ -1,24 +1,36 @@
 import Keycloak from 'keycloak-js';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { UserService } from '../../shared/data-access/facade/user.service';
+import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
   private keycloak = new Keycloak({
-    url: 'http://127.0.0.1:8080',
-    realm: 'superLamp',
-    clientId: 'superLamp'
+    url: 'https://auth.anthony-kalbe.fr',
+    realm: 'voyage',
+    clientId: 'voyage'
   });
 
+  private userService = inject(UserService);
+  private s_toast = inject(ToastService);
+
   async init() {
-    // return  this.keycloak.init({
-    //   onLoad: 'login-required',
-    //   checkLoginIframe: false
-    // }).then(() => {
-    // setInterval(() => {
-    //   this.keycloak.updateToken(30);
-    // }, 10000);
-    // });
+    const authenticated = await this.keycloak.init({
+      onLoad: 'login-required',
+      checkLoginIframe: false,
+      pkceMethod: 'S256',
+    });
+
+    if (authenticated) {
+      this.s_toast.add("Bienvenue.")
+      this.userService.fetchCurrentUser();
+      setInterval(() => {
+        this.keycloak.updateToken(30);
+      }, 10000);
+    }
+
+    // return authenticated;
     return Promise.resolve();
   }
 
@@ -27,6 +39,7 @@ export class AuthService {
   }
 
   logout() {
+    this.userService.clearCurrentUser();
     return this.keycloak.logout();
   }
 
@@ -36,9 +49,5 @@ export class AuthService {
 
   get isAuthenticated() {
     return !!this.keycloak.token;
-  }
-
-  get username() {
-    return this.keycloak.tokenParsed?.["preferred_username"];
   }
 }
