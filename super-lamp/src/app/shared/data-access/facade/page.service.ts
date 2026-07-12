@@ -37,8 +37,8 @@ export class PageService {
     }
   ];
 
-  // Page courante (index, 0-based)
-  private currentPageIndex = new BehaviorSubject<number>(0);
+  // Page courante (index, 1-based)
+  private currentPageIndex = new BehaviorSubject<number>(1);
   currentPageIndex$ = this.currentPageIndex.asObservable();
 
   constructor() {}
@@ -143,11 +143,12 @@ export class PageService {
    * @param id L'ID de la page
    * @param updates Les modifications à appliquer
    */
-  updatePage(id: number, updates: Partial<Omit<Page, 'id'>>): void {
+  updatePage(id: number, updates: Partial<Omit<Page, 'id'>>): Page {
     const index = this.pages.findIndex(p => p.id === id);
     if (index !== -1) {
       this.pages[index] = { ...this.pages[index], ...updates };
     }
+    return this.pages[index];
   }
 
   /**

@@ -1,0 +1,7 @@
+.book {
+  width: 350px;
+  height: 450px;
+  position: relative;
+  perspective: 1000px;
+  background-color: black;
+}
