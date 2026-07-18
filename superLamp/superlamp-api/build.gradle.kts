@@ -11,8 +11,8 @@ repositories {
 
 dependencies {
     implementation(project(":superlamp-core"))
-    implementation(project(":superlamp-data"))
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("tools.jackson.module:jackson-module-kotlin")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")

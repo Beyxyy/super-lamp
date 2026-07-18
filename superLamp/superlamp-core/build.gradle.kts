@@ -7,5 +7,4 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":superlamp-data"))
 }

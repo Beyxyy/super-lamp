@@ -1,37 +1,48 @@
 package fr.superlamp.api.controller
 
-import fr.superlamp.data.entity.Workout
-import fr.superlamp.data.service.WorkoutService
+import fr.superlamp.api.dto.*
+import fr.superlamp.api.mapper.*
+import fr.superlamp.core.service.WorkoutCoreService
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDateTime
 
 @RestController
-@RequestMapping("/api/workout")
-class WorkoutController(private val workoutService: WorkoutService) {
-
+@RequestMapping("/api/workouts")
+class WorkoutController(
+    private val workoutCoreService: WorkoutCoreService
+) {
 
     @GetMapping
-    fun getAllWorkouts(): List<Workout> {
-        return workoutService.getAllWorkouts()
+    fun getAllWorkouts(): List<WorkoutResponse> {
+        return workoutCoreService.getAllWorkouts().map { it.toResponse() }
     }
 
     @GetMapping("/{id}")
-    fun getWorkoutById(@PathVariable id: Long): Workout? {
-        return workoutService.getWorkoutById(id)
+    fun getWorkoutById(@PathVariable id: Long): WorkoutResponse {
+        return workoutCoreService.getWorkoutById(id).toResponse()
+    }
+
+    @GetMapping("/split/{splitId}")
+    fun getWorkoutsBySplitId(@PathVariable splitId: Long): List<WorkoutResponse> {
+        return workoutCoreService.getWorkoutsBySplitId(splitId).map { it.toResponse() }
     }
 
     @PostMapping
-    fun create(@RequestBody workout: Workout): Workout {
-        return workoutService.createWorkout(workout)
+    fun create(@RequestBody request: WorkoutRequest): WorkoutResponse {
+        val workout = workoutCoreService.createWorkout(request.toModel())
+        return workout.toResponse()
     }
 
     @PutMapping("/{id}")
-    fun updateWorkout(@PathVariable id: Long, @RequestBody workout: Workout): Workout? {
-        return workoutService.updateWorkout(id, workout)
+    fun updateWorkout(
+        @PathVariable id: Long,
+        @RequestBody request: WorkoutRequest
+    ): WorkoutResponse {
+        val workout = request.toModel().copy(id = id)
+        return workoutCoreService.updateWorkout(id, workout).toResponse()
     }
 
     @DeleteMapping("/{id}")
     fun deleteWorkout(@PathVariable id: Long) {
-        workoutService.deleteWorkout(id)
+        workoutCoreService.deleteWorkout(id)
     }
 }

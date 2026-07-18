@@ -16,11 +16,7 @@ repositories {
 	mavenCentral()
 }
 
-dependencies {
-	implementation(project(":superlamp-api"))
-	implementation(project(":superlamp-core"))
-	implementation(project(":superlamp-data"))
-}
+// Dépendances gérées par les sous-modules, pas besoin ici
 
 kotlin {
 	compilerOptions {
