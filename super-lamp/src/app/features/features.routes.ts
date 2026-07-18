@@ -10,5 +10,10 @@ export const routes: Routes = [
         path: "dairy",
         loadComponent: () => import("./diairy/diairy.component")
           .then(c => c.DiairyComponent)
+    },
+    {
+        path : "fitness",
+        loadChildren :  () => import('./fitness/fitness.routes').then(m => m.routes)
     }
+
 ];

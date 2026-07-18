@@ -9,34 +9,34 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class WorkoutService(private val workoutRepository: WorkoutRepository) {
 
-    
     fun createWorkout(workout: Workout): Workout {
         return workoutRepository.save(workout)
     }
-    
+
     fun getWorkoutById(id: Long): Workout? {
         return workoutRepository.findById(id).orElse(null)
     }
-    
+
     fun getAllWorkouts(): List<Workout> {
         return workoutRepository.findAll()
     }
-    
+
+    fun getWorkoutsBySplitId(splitId: Long): List<Workout> {
+        return workoutRepository.findBySplitId(splitId)
+    }
+
     fun updateWorkout(id: Long, workout: Workout): Workout? {
-        return workoutRepository.findById(id).map {
-            val updated = Workout(
-                id = it.id,
+        val existing = workoutRepository.findById(id).orElse(null) ?: return null
+        return workoutRepository.save(
+            existing.copy(
+                split = workout.split,
                 name = workout.name,
                 description = workout.description,
-                startTime = workout.startTime,
-                endTime = workout.endTime,
-                durationSeconds = workout.durationSeconds,
-                caloriesBurned = workout.caloriesBurned
+                order = workout.order
             )
-            workoutRepository.save(updated)
-        }.orElse(null)
+        )
     }
-    
+
     fun deleteWorkout(id: Long) {
         workoutRepository.deleteById(id)
     }

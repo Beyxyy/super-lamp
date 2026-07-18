@@ -26,19 +26,22 @@ app
     │   ├── interceptors
     │   ├── interface
     │   └── services (core service used across application)
-    ├── pages
-    │   ├── ** page name **
-    │   │   ├── component **used in page**
-    │   │   └── services (feature services used only in this page rarely used)
+    └── features
+        └──── ** page name **
+            ├── component **used in feature**
+            ├── services (feature services used only in this page rarely used)
+            ├── routes used un the feature
+            └── enum **used in the feature**
     ├── routes
     └── shared
         ├── data-access
             ├──repository (appel api et caching)
-            └──facade (interface entre les repository et les composants)
+            └──facade (interface entre les repository + logique métier lié et les composants)
         ├── directives
         ├── enums
         ├── pipes
         └── ui
+            ├── layout (layout réutilisé dans l'application (grid, carousel full-page, pop-up etc...))
             ├── button
             │   └── button-component
             └── toast

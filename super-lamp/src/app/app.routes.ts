@@ -5,6 +5,6 @@ export const routes: Routes = [
     {
         path: '',
         canMatch: [authGuard],
-        loadChildren: () => import('./pages/pages.routes').then(m => m.routes)
+        loadChildren: () => import('./features/features.routes').then(m => m.routes)
     }
 ];

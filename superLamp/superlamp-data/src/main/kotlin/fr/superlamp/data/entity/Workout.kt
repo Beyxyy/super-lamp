@@ -1,14 +1,17 @@
 package fr.superlamp.data.entity
 
 import jakarta.persistence.*
-import java.time.LocalDateTime
 
 @Entity
-@Table(name = "workouts")
-class Workout(
+@Table(name = "workout")
+data class Workout(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
+    
+    @ManyToOne
+    @JoinColumn(name = "split_id", nullable = false)
+    val split: Split,
     
     @Column(nullable = false)
     val name: String,
@@ -16,15 +19,12 @@ class Workout(
     @Column
     val description: String? = null,
     
-    @Column(name = "start_time", nullable = false)
-    val startTime: LocalDateTime,
+    @Column(nullable = false)
+    val order: Int,
     
-    @Column(name = "end_time")
-    val endTime: LocalDateTime? = null,
+    @OneToMany(mappedBy = "workout", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val workoutExercises: MutableSet<WorkoutExercise> = mutableSetOf(),
     
-    @Column(name = "duration_seconds")
-    val durationSeconds: Long? = null,
-    
-    @Column(name = "calories_burned")
-    val caloriesBurned: Int? = null
+    @OneToMany(mappedBy = "workout", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val lifts: MutableSet<Lift> = mutableSetOf()
 )

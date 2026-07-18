@@ -6,32 +6,32 @@ import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 
 @RestController
-@RequestMapping("/api/workouts")
-// class WorkoutController(private val workoutService: WorkoutService) {
-class WorkoutController() {
+@RequestMapping("/api/workout")
+class WorkoutController(private val workoutService: WorkoutService) {
 
-    // @GetMapping
-    // fun getAllWorkouts(): List<Workout> {
-    //     return workoutService.getAllWorkouts()
-    // }
 
-    // @GetMapping("/{id}")
-    // fun getWorkoutById(@PathVariable id: Long): Workout? {
-    //     return workoutService.getWorkoutById(id)
-    // }
+    @GetMapping
+    fun getAllWorkouts(): List<Workout> {
+        return workoutService.getAllWorkouts()
+    }
 
-    // @PostMapping
-    // fun createWorkout(@RequestBody workout: Workout): Workout {
-    //     return workoutService.createWorkout(workout)
-    // }
+    @GetMapping("/{id}")
+    fun getWorkoutById(@PathVariable id: Long): Workout? {
+        return workoutService.getWorkoutById(id)
+    }
 
-    // @PutMapping("/{id}")
-    // fun updateWorkout(@PathVariable id: Long, @RequestBody workout: Workout): Workout? {
-    //     return workoutService.updateWorkout(id, workout)
-    // }
+    @PostMapping
+    fun create(@RequestBody workout: Workout): Workout {
+        return workoutService.createWorkout(workout)
+    }
 
-    // @DeleteMapping("/{id}")
-    // fun deleteWorkout(@PathVariable id: Long) {
-    //     workoutService.deleteWorkout(id)
-    // }
+    @PutMapping("/{id}")
+    fun updateWorkout(@PathVariable id: Long, @RequestBody workout: Workout): Workout? {
+        return workoutService.updateWorkout(id, workout)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteWorkout(@PathVariable id: Long) {
+        workoutService.deleteWorkout(id)
+    }
 }
