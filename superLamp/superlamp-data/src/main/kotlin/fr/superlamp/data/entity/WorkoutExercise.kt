@@ -17,7 +17,7 @@ data class WorkoutExercise(
     @JoinColumn(name = "exercise_id", nullable = false)
     val exercise: Exercise,
     
-    @Column(nullable = false)
+    @Column(name = "exercise_order", nullable = false)
     val order: Int,
     
     @Column(name = "planned_sets", nullable = false)

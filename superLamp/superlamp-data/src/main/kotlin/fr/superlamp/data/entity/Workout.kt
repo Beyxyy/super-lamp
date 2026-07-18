@@ -19,7 +19,7 @@ data class Workout(
     @Column
     val description: String? = null,
     
-    @Column(nullable = false)
+    @Column(name = "workout_order", nullable = false)
     val order: Int,
     
     @OneToMany(mappedBy = "workout", cascade = [CascadeType.ALL], orphanRemoval = true)

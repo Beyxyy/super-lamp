@@ -2,6 +2,7 @@ package fr.superlamp.api.controller
 
 import fr.superlamp.api.dto.*
 import fr.superlamp.api.mapper.*
+import fr.superlamp.core.service.ParserService
 import fr.superlamp.core.service.WorkoutCoreService
 import org.springframework.web.bind.annotation.*
 
@@ -44,5 +45,12 @@ class WorkoutController(
     @DeleteMapping("/{id}")
     fun deleteWorkout(@PathVariable id: Long) {
         workoutCoreService.deleteWorkout(id)
+    }
+
+    @PostMapping("/fromText")
+    fun createFromText(@RequestBody request: WorkoutStructRequest) {
+        val parserService = fr.superlamp.core.service.ParserService()
+        val parsedWorkout = parserService.parse(request.string)
+        // TODO: Convertir ParsedWorkout vers Workout et sauvegarder via workoutCoreService
     }
 }

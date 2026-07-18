@@ -33,3 +33,7 @@ springBoot {
 tasks.named("bootJar") {
     enabled = false
 }
+
+tasks.named("bootRun") {
+    enabled = false
+}

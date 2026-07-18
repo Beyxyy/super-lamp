@@ -1,6 +1,7 @@
 package fr.superlamp.api.config
 
 import fr.superlamp.core.service.ExerciseCoreService
+import fr.superlamp.core.service.ParserService
 import fr.superlamp.core.service.LiftCoreService
 import fr.superlamp.core.service.SetCoreService
 import fr.superlamp.core.service.SplitCoreService
@@ -55,5 +56,10 @@ class CoreConfig {
     @Bean
     fun setCoreService(setRepositoryAdapter: SetRepositoryAdapter): SetCoreService {
         return SetCoreService(setRepositoryAdapter)
+    }
+
+    @Bean
+    fun parserService() : ParserService {
+        return ParserService()
     }
 }

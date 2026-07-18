@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "set")
+@Table(name = "lift_set")
 data class Set(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ data class Set(
     @JoinColumn(name = "workout_exercise_id", nullable = false)
     val workoutExercise: WorkoutExercise,
     
-    @Column(nullable = false)
+    @Column(name = "set_order", nullable = false)
     val order: Int,
     
     @Column(nullable = false)
