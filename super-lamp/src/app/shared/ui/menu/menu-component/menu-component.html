@@ -1,0 +1,25 @@
+<!-- Bouton Menu Burger FIXED en haut à gauche -->
+<button (click)="toggleMenu()" class="menu-toggle" aria-label="Toggle menu">
+  <div class="menu-icon" [class.open]="menuService.isOpen$ | async">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
+
+<!-- Overlay et Menu -->
+<div class="menu-overlay" [class.open]="menuService.isOpen$ | async" (click)="menuService.close()">
+  <nav class="menu-content" (click)="$event.stopPropagation()">
+    <!-- Bouton de fermeture -->
+    <button class="close-button" (click)="menuService.close()" aria-label="Close menu">×</button>
+    
+    <ul>
+      <li><a routerLink="/dashboard" (click)="menuService.close()">Dashboard</a></li>
+      <li><a routerLink="/splits" (click)="menuService.close()">Splits</a></li>
+      <li><a routerLink="/workouts" (click)="menuService.close()">Workouts</a></li>
+      <li><a routerLink="/exercises" (click)="menuService.close()">Exercises</a></li>
+      <li><a routerLink="/lifts" (click)="menuService.close()">Historique</a></li>
+      <li><a routerLink="/profile" (click)="menuService.close()">Profile</a></li>
+    </ul>
+  </nav>
+</div>

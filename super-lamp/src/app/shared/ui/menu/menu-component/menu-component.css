@@ -1,0 +1,130 @@
+/* Style du bouton burger - FIXED en haut à gauche */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #2c3e50;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 21px;
+  z-index: 1001;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-icon span {
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Animation du burger quand ouvert */
+.menu-icon.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  scroll-behavior: contain;
+}
+
+/* Menu content */
+.menu-content {
+  background: #2c3e50;
+  width: 280px;
+  height: 100%;
+  padding: 80px 20px 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.menu-overlay.open .menu-content {
+  transform: translateX(0);
+}
+
+/* Bouton de fermeture */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 10;
+}
+
+.close-button:hover {
+  opacity: 0.8;
+}
+
+/* Liste du menu */
+.menu-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-content li {
+  margin: 15px 0;
+}
+
+.menu-content a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+  display: block;
+  padding: 8px 0;
+}
+
+.menu-content a:hover {
+  color: #3498db;
+}
+
+/* Empêche le scroll quand menu ouvert */
+body.menu-open {
+  overflow: hidden;
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TotoComponent } from './toto-component';
+import { CreateLiftText } from './create-lift-text';
 
-describe('TotoComponent', () => {
-  let component: TotoComponent;
-  let fixture: ComponentFixture<TotoComponent>;
+describe('CreateLiftText', () => {
+  let component: CreateLiftText;
+  let fixture: ComponentFixture<CreateLiftText>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TotoComponent]
+      imports: [CreateLiftText]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TotoComponent);
+    fixture = TestBed.createComponent(CreateLiftText);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

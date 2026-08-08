@@ -10,5 +10,5 @@ import { Component, input } from '@angular/core';
 export class ButtonComponent {
 
   public text = input<string>('Button Text')
-
+  
 }
