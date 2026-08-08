@@ -2,9 +2,9 @@ package fr.superlamp.data.entity
 
 import jakarta.persistence.*
 
-@Entity
+    @Entity
 @Table(name = "exercise")
-data class Exercise(
+data class ExerciseEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -19,5 +19,5 @@ data class Exercise(
     val muscleGroup: String? = null,
     
     @OneToMany(mappedBy = "exercise", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val workoutExercises: MutableSet<WorkoutExercise> = mutableSetOf()
+    val workoutExercises: MutableSet<WorkoutExerciseEntity> = mutableSetOf()
 )

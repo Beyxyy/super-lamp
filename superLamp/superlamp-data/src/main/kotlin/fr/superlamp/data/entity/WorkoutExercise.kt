@@ -4,18 +4,18 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "workout_exercise")
-data class WorkoutExercise(
+data class WorkoutExerciseEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     
     @ManyToOne
     @JoinColumn(name = "workout_id", nullable = false)
-    val workout: Workout,
+    val workout: WorkoutEntity,
     
     @ManyToOne
     @JoinColumn(name = "exercise_id", nullable = false)
-    val exercise: Exercise,
+    val exercise: ExerciseEntity,
     
     @Column(name = "exercise_order", nullable = false)
     val order: Int,
@@ -30,5 +30,5 @@ data class WorkoutExercise(
     val restTimeSeconds: Int? = null,
     
     @OneToMany(mappedBy = "workoutExercise", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val sets: MutableSet<Set> = mutableSetOf()
+    val sets: MutableSet<SetEntity> = mutableSetOf()
 )

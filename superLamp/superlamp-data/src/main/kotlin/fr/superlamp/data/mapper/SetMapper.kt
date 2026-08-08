@@ -1,9 +1,9 @@
 package fr.superlamp.data.mapper
 
 import fr.superlamp.core.model.Set as SetModel
-import fr.superlamp.data.entity.Lift as LiftEntity
-import fr.superlamp.data.entity.Set as SetEntity
-import fr.superlamp.data.entity.WorkoutExercise as WorkoutExerciseEntity
+import fr.superlamp.data.entity.LiftEntity
+import fr.superlamp.data.entity.SetEntity
+import fr.superlamp.data.entity.WorkoutExerciseEntity
 
 /**
  * Mapper entre SetEntity (JPA) et Set (modèle métier)

@@ -1,7 +1,7 @@
 package fr.superlamp.data.mapper
 
 import fr.superlamp.core.model.Split as SplitModel
-import fr.superlamp.data.entity.Split as SplitEntity
+import fr.superlamp.data.entity.SplitEntity
 
 /**
  * Mapper entre SplitEntity (JPA) et Split (modèle métier)

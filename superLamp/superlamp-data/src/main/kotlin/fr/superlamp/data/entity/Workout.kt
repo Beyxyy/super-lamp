@@ -4,14 +4,14 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "workout")
-data class Workout(
+data class WorkoutEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     
     @ManyToOne
     @JoinColumn(name = "split_id", nullable = false)
-    val split: Split,
+    val split: SplitEntity,
     
     @Column(nullable = false)
     val name: String,
@@ -23,8 +23,8 @@ data class Workout(
     val order: Int,
     
     @OneToMany(mappedBy = "workout", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val workoutExercises: MutableSet<WorkoutExercise> = mutableSetOf(),
+    val workoutExercises: MutableSet<WorkoutExerciseEntity> = mutableSetOf(),
     
     @OneToMany(mappedBy = "workout", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val lifts: MutableSet<Lift> = mutableSetOf()
+    val lifts: MutableSet<LiftEntity> = mutableSetOf()
 )

@@ -1,9 +1,9 @@
 package fr.superlamp.data.mapper
 
 import fr.superlamp.core.model.WorkoutExercise as WorkoutExerciseModel
-import fr.superlamp.data.entity.Exercise as ExerciseEntity
-import fr.superlamp.data.entity.Workout as WorkoutEntity
-import fr.superlamp.data.entity.WorkoutExercise as WorkoutExerciseEntity
+import fr.superlamp.data.entity.ExerciseEntity
+import fr.superlamp.data.entity.WorkoutEntity
+import fr.superlamp.data.entity.WorkoutExerciseEntity
 
 /**
  * Mapper entre WorkoutExerciseEntity (JPA) et WorkoutExercise (modèle métier)

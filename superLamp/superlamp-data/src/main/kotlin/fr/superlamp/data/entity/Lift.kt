@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "lift")
-data class Lift(
+data class LiftEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -21,7 +21,7 @@ data class Lift(
     
     @ManyToOne
     @JoinColumn(name = "workout_id", nullable = false)
-    val workout: Workout,
+    val workout: WorkoutEntity,
     
     @Column(name = "start_time", nullable = false)
     val startTime: LocalDateTime,
@@ -30,5 +30,5 @@ data class Lift(
     val endTime: LocalDateTime? = null,
     
     @OneToMany(mappedBy = "lift", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val sets: MutableSet<Set> = mutableSetOf()
+    val sets: MutableSet<SetEntity> = mutableSetOf()
 )

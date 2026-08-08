@@ -53,9 +53,12 @@ class WorkoutCoreService(
     }
 
     fun deleteWorkout(id: Long) {
-        if (!workoutRepository.findById(id).let { it != null }) {
-            throw WorkoutNotFoundException(id)
-        }
+        workoutRepository.findById(id) 
+            ?: throw WorkoutNotFoundException(id)
         workoutRepository.deleteById(id)
+    }
+    
+    fun handleText(content : String) {
+        // val parser = ParserService.parse(content)
     }
 }

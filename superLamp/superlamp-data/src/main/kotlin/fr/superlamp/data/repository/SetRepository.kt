@@ -1,11 +1,11 @@
 package fr.superlamp.data.repository
 
-import fr.superlamp.data.entity.Set
+import fr.superlamp.data.entity.SetEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface SetRepository : JpaRepository<Set, Long> {
-    fun findByLiftId(liftId: Long): List<Set>
-    fun findByWorkoutExerciseId(workoutExerciseId: Long): List<Set>
+interface SetRepository : JpaRepository<SetEntity, Long> {
+    fun findByLiftId(liftId: Long): List<SetEntity>
+    fun findByWorkoutExerciseId(workoutExerciseId: Long): List<SetEntity>
 }

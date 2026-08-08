@@ -1,8 +1,8 @@
 package fr.superlamp.data.mapper
 
 import fr.superlamp.core.model.Workout as WorkoutModel
-import fr.superlamp.data.entity.Split as SplitEntity
-import fr.superlamp.data.entity.Workout as WorkoutEntity
+import fr.superlamp.data.entity.SplitEntity
+import fr.superlamp.data.entity.WorkoutEntity
 
 /**
  * Mapper entre WorkoutEntity (JPA) et Workout (modèle métier)

@@ -1,8 +1,8 @@
 package fr.superlamp.data.mapper
 
 import fr.superlamp.core.model.Lift as LiftModel
-import fr.superlamp.data.entity.Lift as LiftEntity
-import fr.superlamp.data.entity.Workout as WorkoutEntity
+import fr.superlamp.data.entity.LiftEntity
+import fr.superlamp.data.entity.WorkoutEntity
 
 /**
  * Mapper entre LiftEntity (JPA) et Lift (modèle métier)

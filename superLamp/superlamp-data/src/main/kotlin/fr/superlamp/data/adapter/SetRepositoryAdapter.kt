@@ -2,8 +2,6 @@ package fr.superlamp.data.adapter
 
 import fr.superlamp.core.model.Set as SetModel
 import fr.superlamp.core.ports.SetRepositoryPort
-import fr.superlamp.data.entity.Lift as LiftEntity
-import fr.superlamp.data.entity.WorkoutExercise as WorkoutExerciseEntity
 import fr.superlamp.data.mapper.toEntity
 import fr.superlamp.data.mapper.toModel
 import fr.superlamp.data.repository.LiftRepository

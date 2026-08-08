@@ -5,18 +5,18 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "lift_set")
-data class Set(
+data class SetEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     
     @ManyToOne
     @JoinColumn(name = "lift_id", nullable = false)
-    val lift: Lift,
+    val lift: LiftEntity,
     
     @ManyToOne
     @JoinColumn(name = "workout_exercise_id", nullable = false)
-    val workoutExercise: WorkoutExercise,
+    val workoutExercise: WorkoutExerciseEntity,
     
     @Column(name = "set_order", nullable = false)
     val order: Int,

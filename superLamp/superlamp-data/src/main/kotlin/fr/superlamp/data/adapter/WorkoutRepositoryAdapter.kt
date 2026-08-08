@@ -2,7 +2,6 @@ package fr.superlamp.data.adapter
 
 import fr.superlamp.core.model.Workout as WorkoutModel
 import fr.superlamp.core.ports.WorkoutRepositoryPort
-import fr.superlamp.data.entity.Split as SplitEntity
 import fr.superlamp.data.mapper.toEntity
 import fr.superlamp.data.mapper.toModel
 import fr.superlamp.data.repository.SplitRepository

@@ -42,6 +42,7 @@ class WorkoutController(
         return workoutCoreService.updateWorkout(id, workout).toResponse()
     }
 
+    // pas de return donc code 204 no content
     @DeleteMapping("/{id}")
     fun deleteWorkout(@PathVariable id: Long) {
         workoutCoreService.deleteWorkout(id)
@@ -49,8 +50,6 @@ class WorkoutController(
 
     @PostMapping("/fromText")
     fun createFromText(@RequestBody request: WorkoutStructRequest) {
-        val parserService = fr.superlamp.core.service.ParserService()
-        val parsedWorkout = parserService.parse(request.string)
-        // TODO: Convertir ParsedWorkout vers Workout et sauvegarder via workoutCoreService
+       //val result = workoutCoreService.handleFromText(request.content)
     }
 }
